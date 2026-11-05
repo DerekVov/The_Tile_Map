@@ -34,6 +34,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void FaceCorrectDirection()
     {
-        
+        // if not facing correct direction
+        if (IfNotFacingCorrectDirection())
+        {
+            Flip();
+        }
+            // face correct direction
+            
+    }
+
+    private void Flip()
+    {
+        transform.localScale  = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    private bool IfNotFacingCorrectDirection()
+    {
+        if (moveDirection.x > 0 && transform.localScale.x < 0 || moveDirection.x < 0 && transform.localScale.x > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
